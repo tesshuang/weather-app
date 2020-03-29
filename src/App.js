@@ -1,9 +1,10 @@
 import React from 'react';
+import Weather from './components/Weather'
 
 function App() {
   return (
-    <div className="ui container">
-      <h1>Weather App</h1>
+    <div className='ui app'>
+      <Weather />
     </div>
   );
 }
