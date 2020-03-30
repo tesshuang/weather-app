@@ -9,11 +9,11 @@ export default class Result extends React.Component {
     return(
       <div>
         <div className='result-wrapper'>
+          <h4 className='name'>{name}</h4>
           <div className='general'>
-            <h4>{name}</h4>
             <img src={`http://openweathermap.org/img/wn/${curWeather.icon}@2x.png`} alt={`current weather of ${name}`}/>
             <p>{curWeather.description}</p>
-            <p>{`${main.temp} °C`}</p>
+            <p>{`${main.temp}°`}</p>
           </div>
           <div className='more-info'>
             <div>

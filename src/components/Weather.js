@@ -8,12 +8,33 @@ export default class Weather extends React.Component {
     this.state = {
       city: '',
       weatherData: null,
-      NFmsg: null
+      NFmsg: null,
+      lat: '',
+      lon: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleData = this.handleData.bind(this)
+  }
+  componentDidMount() {
+    console.log(navigator.geolocation);
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        // console.log(position)
+        this.setState({
+          lat: Math.round(position.coords.latitude),
+          lon: Math.round(position.coords.longitude),
+        })
+        this.handleData();
+      },
+      err => {
+        console.log(err.message);
+        // this.setState({ city: 'london' })
+      }
+    )
+    
+    
   }
 
   handleChange(e) {
@@ -24,7 +45,7 @@ export default class Weather extends React.Component {
 
   async handleData() {
     try {
-      const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`);
+      const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}&lat=${this.state.lat}&lon=${this.state.lon}`);
       const data = await result.json();
       
       if( data.cod === '404') {

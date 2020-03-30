@@ -29,3 +29,16 @@ code {
   padding: 2.5rem !important;
   box-shadow: 5px 10px 15px #d3d3d3 !important;
 }
+
+.result-wrapper {
+  padding: 1rem 0.75rem;
+}
+
+.name {
+  font-size: 30px;
+}
+.general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
