@@ -26,5 +26,6 @@ code {
 
 .weather {
   min-width: 400px;
-  padding: 2.5rem;
+  padding: 2.5rem !important;
+  box-shadow: 5px 10px 15px #d3d3d3 !important;
 }
