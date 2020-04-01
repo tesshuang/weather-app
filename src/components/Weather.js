@@ -48,14 +48,16 @@ export default class Weather extends React.Component {
       const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}&lat=${this.state.lat}&lon=${this.state.lon}`);
       const data = await result.json();
       
-      if( data.cod === '404') {
+      if ( data.cod === '404') {
         this.setState({
           NFmsg: data.message
         })
+      } else if ( data.cod === 200 ) {
+        this.setState({
+          weatherData: data
+        })
       }
-      this.setState({
-        weatherData: data
-      })
+      
       console.log(data);
     } catch(e) {
       console.error(e);
@@ -63,12 +65,16 @@ export default class Weather extends React.Component {
   }
 
   handleSearch(e) {
-    e.preventDefault(); 
+    e.preventDefault();
+    this.setState({
+      lat: '',
+      lon: '',
+      weatherData: null,
+      city: '',
+      NFmsg: ''
+    }) 
     this.handleData();
 
-    this.setState({
-      city: ''
-    })
   }
   render() {
     return(
@@ -89,9 +95,12 @@ export default class Weather extends React.Component {
           </form>
         </div>
         <div className='content'>
+          {!this.state.weatherData && !this.state.NFmsg &&
+            <p>Searching your location...</p>
+          }
           {this.state.NFmsg && 
             <div>
-              <p>{this.state.NFmsg}</p>
+              <p>{`Sorry, ${this.state.NFmsg}`}</p>
             </div>}
           {this.state.weatherData && 
             <Result weatherData={this.state.weatherData} />}
