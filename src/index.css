@@ -32,6 +32,10 @@ code {
   box-shadow: 5px 10px 15px #d3d3d3 !important;
 }
 
+.city-input {
+  width: 100%;
+} 
+
 .result-wrapper {
   padding: 1rem 0.75rem;
 }
