@@ -79,7 +79,7 @@ export default class Weather extends React.Component {
   render() {
     return(
       <div className='ui card weather'>
-        <div className='content'>
+        <div className='content nav'>
           <form className='ui action input city-input' onSubmit={this.handleSearch}> 
             <input 
               type='text' 
@@ -93,6 +93,7 @@ export default class Weather extends React.Component {
                 Search
             </button>
           </form>
+          <button className='btn-clear toggle'><span role="img">🌞</span></button>
         </div>
         <div className='content'>
           {!this.state.weatherData && !this.state.NFmsg &&

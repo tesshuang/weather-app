@@ -32,9 +32,22 @@ code {
   box-shadow: 5px 10px 15px #d3d3d3 !important;
 }
 
-.city-input {
+/* .city-input {
   width: 100%;
-} 
+}  */
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
+}
+
+.toggle span {
+  font-size: 30px;
+}
 
 .result-wrapper {
   padding: 1rem 0.75rem;
