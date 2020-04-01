@@ -1,5 +1,7 @@
 :root {
   --bg: #fffbf4;
+  --grey: #9e9e9e;
+  --orange: #fed182;
 }
 
 body {
@@ -37,8 +39,41 @@ code {
 .name {
   font-size: 30px;
 }
+
 .general {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.temp {
+  font-size: 40px;
+  margin-bottom: 10px !important;
+}
+
+.desc {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.more-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0.5rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.title {
+  color: var(--grey);
+  margin-top: 15px;
 }

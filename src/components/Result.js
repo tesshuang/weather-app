@@ -12,21 +12,21 @@ export default class Result extends React.Component {
           <h4 className='name'>{name}</h4>
           <div className='general'>
             <img src={`http://openweathermap.org/img/wn/${curWeather.icon}@2x.png`} alt={`current weather of ${name}`}/>
-            <p>{curWeather.description}</p>
-            <p>{`${main.temp}°`}</p>
+            <p className='temp'>{`${main.temp}°`}</p>
+            <p className='desc'>{curWeather.description}</p>
           </div>
           <div className='more-info'>
-            <div>
-              <div>{wind.speed}</div>
-              <h5>Wind</h5>
+            <div className='info'>
+              <div className='detail'>{`${wind.speed}m/s`}</div>
+              <h5 className='title'>Wind</h5>
             </div>
-            <div>
-              <div>{main.humidity}</div>
-              <h5>Humidity</h5>
+            <div className='info'>
+              <div className='detail'>{`${main.humidity}%`}</div>
+              <h5 className='title'>Humidity</h5>
             </div>
-            <div>
-              <div>{main.temp_max}</div>
-              <h5>Max</h5>
+            <div className='info'>
+              <div className='detail'>{`${main.temp_max}°`}</div>
+              <h5 className='title'>Max</h5>
             </div>
           </div>
         </div>
