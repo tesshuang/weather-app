@@ -3,4 +3,4 @@ import React from 'react'
 const { Provider, Consumer} = React.createContext()
 
 export const ThemeProvider = Provider
-export const ThemeCosumer = Consumer
+export const ThemeConsumer = Consumer

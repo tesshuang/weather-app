@@ -1,5 +1,6 @@
 import React from 'react'
 import Result from './Result'
+import { ThemeConsumer } from '../context/theme'
 
 export default class Weather extends React.Component {
   constructor(props) {
@@ -66,34 +67,39 @@ export default class Weather extends React.Component {
   }
   render() {
     return(
-      <div className='ui card weather'>
-        <div className='content'>
-          <form className='ui action input city-input' onSubmit={this.handleSearch}> 
-            <input 
-              type='text' 
-              placeholder='Search your city'
-              onChange={this.handleChange} 
-              value={this.state.city}/>
-            <button 
-              type='submit' 
-              className='ui button'
-              >
-              Search
-            </button>
-          </form>
-        </div>
-        <div className='content'>
-          {!this.state.weatherData && !this.state.NFmsg &&
-            <p>Searching your location...</p>
-          }
-          {this.state.NFmsg && 
-            <div>
-              <p>{`Sorry, ${this.state.NFmsg}`}</p>
-            </div>}
-          {this.state.weatherData && 
-            <Result weatherData={this.state.weatherData} />}
-        </div>
-      </div>
+      <ThemeConsumer>
+        {({theme}) => (
+          <div className={`ui card weather weather-${theme}`}>
+            <div className='content'>
+              <form className='ui action input city-input' onSubmit={this.handleSearch}> 
+                <input 
+                  type='text' 
+                  placeholder='Search your city'
+                  onChange={this.handleChange} 
+                  value={this.state.city}/>
+                <button 
+                  type='submit' 
+                  className='ui button'
+                  >
+                  Search
+                </button>
+              </form>
+            </div>
+            <div className='content'>
+              {!this.state.weatherData && !this.state.NFmsg &&
+                <p>Searching your location...</p>
+              }
+              {this.state.NFmsg && 
+                <div>
+                  <p>{`Sorry, ${this.state.NFmsg}`}</p>
+                </div>}
+              {this.state.weatherData && 
+                <Result weatherData={this.state.weatherData} />}
+            </div>
+          </div>
+        )}
+      </ThemeConsumer>
+      
     )
   }
 }

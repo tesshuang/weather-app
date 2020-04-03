@@ -1,5 +1,6 @@
 :root {
-  --bg: #fffbf4;
+  --bg-light: #fffbf4;
+  --bg-dark: #271a02;
   --grey: #9e9e9e;
   --orange: #fed182;
 }
@@ -11,7 +12,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg);
 }
 
 code {
@@ -27,10 +27,29 @@ code {
   align-items: center;
 }
 
+.app-light {
+  background-color: var(--bg-light);
+  color: #222222;
+}
+
+.app-dark {
+  background-color: var(--bg-dark);
+  color: #f0f0f0;
+}
+
 .weather {
   min-width: 400px;
   padding: 2.5rem !important;
+}
+
+.weather-light {
+  background-color: #ffffff;
   box-shadow: 5px 10px 15px #d3d3d3 !important;
+}
+
+.weather-dark {
+  background-color: #222222 !important;
+  box-shadow: 5px 10px 15px #000000 !important;
 }
 
 .nav-bar {
@@ -44,7 +63,7 @@ code {
   background: transparent;
 }
 
-.toggle span {
+.toggle {
   font-size: 30px;
 }
 
