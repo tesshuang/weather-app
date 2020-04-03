@@ -67,7 +67,7 @@ export default class Weather extends React.Component {
   render() {
     return(
       <div className='ui card weather'>
-        <div className='content nav'>
+        <div className='content'>
           <form className='ui action input city-input' onSubmit={this.handleSearch}> 
             <input 
               type='text' 
