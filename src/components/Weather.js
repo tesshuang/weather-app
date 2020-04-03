@@ -81,7 +81,6 @@ export default class Weather extends React.Component {
               Search
             </button>
           </form>
-          <button className='btn-clear toggle'><span role="img">🌞</span></button>
         </div>
         <div className='content'>
           {!this.state.weatherData && !this.state.NFmsg &&
