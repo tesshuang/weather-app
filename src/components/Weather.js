@@ -16,7 +16,7 @@ export default class Weather extends React.Component {
     this.handleData = this.handleData.bind(this)
   }
   componentDidMount() {
-    console.log(navigator.geolocation);
+    // console.log(navigator.geolocation);
     window.navigator.geolocation.getCurrentPosition(
       position => {
         this.handleData(position.coords.longitude, position.coords.latitude);
@@ -24,9 +24,7 @@ export default class Weather extends React.Component {
       err => {
         console.log(err.message);
       }
-    )
-    
-    
+    )  
   }
 
   handleChange(e) {
@@ -38,7 +36,6 @@ export default class Weather extends React.Component {
   async handleData(lon='', lat='') {
     // console.log(lon)
     try {
-      console.log('city', this.state.city)
       const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}&lat=${lat}&lon=${lon}`);
       const data = await result.json();
       
@@ -50,15 +47,14 @@ export default class Weather extends React.Component {
         this.setState({
           weatherData: data
         })
-      }
-      
+      } 
       console.log(data);
     } catch(e) {
       console.error(e);
     }
   }
 
-  async handleSearch (e) {
+  handleSearch (e) {
     e.preventDefault();
     this.handleData();
     // reset data
@@ -82,7 +78,7 @@ export default class Weather extends React.Component {
               type='submit' 
               className='ui button'
               >
-                Search
+              Search
             </button>
           </form>
           <button className='btn-clear toggle'><span role="img">🌞</span></button>
