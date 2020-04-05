@@ -10,6 +10,7 @@ export default class Weather extends React.Component {
       city: '',
       weatherData: null,
       NFmsg: null,
+      errMsg: null,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -23,7 +24,12 @@ export default class Weather extends React.Component {
         this.handleData(position.coords.longitude, position.coords.latitude);
       },
       err => {
-        console.log(err.message);
+        // console.log(err.message);
+        if(err.message) {
+          this.setState({ 
+            errMsg: err.message,
+          })
+        }
       }
     )  
   }
@@ -86,8 +92,11 @@ export default class Weather extends React.Component {
               </form>
             </div>
             <div className='content'>
-              {!this.state.weatherData && !this.state.NFmsg &&
+              {!this.state.weatherData && !this.state.NFmsg && !this.state.errMsg &&
                 <p>Searching your location...</p>
+              }
+              {this.state.errMsg && !this.state.weatherData && !this.state.NFmsg &&
+                <p>{`${this.state.errMsg}. Search your city's weather`}</p>
               }
               {this.state.NFmsg && 
                 <div>
